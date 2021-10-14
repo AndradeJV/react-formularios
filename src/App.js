@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.css';
-import AdicionaCliente from './components/AdicionaCliente';
+import AdicionaCliente from './components/AdicionaCliente/AdicionarCliente';
 
 function App() {
   return (
