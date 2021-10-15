@@ -1,8 +1,10 @@
 import React from 'react';
 import './App.css';
-import AdicionaCliente from './components/AdicionaCliente/AdicionarCliente';
 
-function App() {
+import AdicionaCliente from './components/AdicionaCliente/AdicionaCliente';
+
+
+const App = () => {
   return (
     <div className="container">
       <AdicionaCliente />
