@@ -1,26 +1,27 @@
 import React from 'react';
 import { Formik, Field } from 'formik';
+import * as yup from 'yup';
 
 import './AdicionaCliente.css';
 
 const AdicionaCliente = () => {
+
+  const esquemaValidacao = yup.object({
+    nome: yup.string()
+      .required('O nome é obrigatório')
+      .min(2, 'O nome deve ter no mínimo dois caracteres')
+      .max(45, 'O nome deve ter no máximo 45 caracteres'),
+
+    email: yup.string().required('O email é obrigatório')
+  });
+
   return (
     <>
       <h1>Cadastro de Clientes</h1>
 
       <Formik
         initalValues={{ nome: '', email: '', nascimento: '' }}
-        validate={values => {
-          const errors = {};
-          if (!values.nome)
-            errors.nome = 'O nome é obrigatório';
-          if (!values.email)
-            errors.email = 'O email é obrigatório';
-          else if (!/^[A-Z0._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values.email)) {
-            errors.email = 'O email é inválido';
-          }
-          return errors;
-        }}
+        validationSchema={esquemaValidacao}
         onSubmit={values => {
           alert(JSON.stringify(values));
         }}
